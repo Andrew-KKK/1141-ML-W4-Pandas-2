@@ -37,8 +37,7 @@ def filter_and_analyze_data(df):
     
     # TODO 3.1: 找出數學成績 < 60 的學生
     math_failed = None
-    math_df = df[['姓名', '班級', '數學']]
-    math_failed = math_df[math_df['數學'] < 60]
+    math_failed = df[df['數學'] < 60]
     # TODO 3.2: 找出班級為 'A' 且英文 > 90 的學生
     high_A = None
     high_A = df[['姓名', '班級', '英文']]
@@ -47,8 +46,9 @@ def filter_and_analyze_data(df):
     summary = None
     summary = df.describe()
     # TODO 4.2: 找出總分最高的學生
-    top_student = None
-    top_student = df.loc[df['總分'].idxmax()]
+    
+    max = df['總分'].max()
+    top_student = df[df['總分'] == max]
 
     # 回傳 dict，方便 pytest 檢查每個任務
     return {
