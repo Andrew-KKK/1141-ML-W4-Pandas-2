@@ -24,7 +24,7 @@ def feature_engineering(df):
     df['總分'] = df['數學']+df['英文']+df['國文']+df['自然']+df['社會']
 
     # TODO 2.2: 計算平均分數
-    df['平均'] = df['總分'] / 5
+    df['平均'] = df[['數學','英文','國文','自然','社會']].mean(axis=1)
         #這題也可以用函數的方式計算 (mean(axis=1))
 
     # TODO 2.3: 新增是否及格欄位（平均 >= 60 為及格）
@@ -36,14 +36,11 @@ def filter_and_analyze_data(df):
     """任務三與四：篩選資料與統計 (Done)"""
     
     # TODO 3.1: 找出數學成績 < 60 的學生
-    math_failed = None
     math_failed = df[df['數學'] < 60]
     # TODO 3.2: 找出班級為 'A' 且英文 > 90 的學生
-    high_A = None
-    high_A = df[['姓名', '班級', '英文']]
+#    high_A = df[['姓名', '班級', '英文']]
     high_A = df[(df['英文'] > 90) & (df['班級'] == 'A')]
     # TODO 4.1: 統計摘要
-    summary = None
     summary = df.describe()
     # TODO 4.2: 找出總分最高的學生
     
