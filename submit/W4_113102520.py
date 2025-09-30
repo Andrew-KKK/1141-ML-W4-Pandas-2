@@ -42,13 +42,13 @@ def filter_and_analyze_data(df):
     # TODO 3.2: 找出班級為 'A' 且英文 > 90 的學生
     high_A = None
     high_A = df[['姓名', '班級', '英文']]
-    high_A = df[(high_A['英文'] > 90) & (high_A['班級'] == 'A')]
+    high_A = df[(df['英文'] > 90) & (df['班級'] == 'A')]
     # TODO 4.1: 統計摘要
     summary = None
     summary = df.describe()
     # TODO 4.2: 找出總分最高的學生
     top_student = None
-    top_student = df['總分'].max()
+    top_student = df.loc[df['總分'].idxmax()]
 
     # 回傳 dict，方便 pytest 檢查每個任務
     return {
