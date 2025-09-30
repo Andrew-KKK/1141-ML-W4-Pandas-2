@@ -10,11 +10,11 @@ def load_and_explore_data(file_path):
     df = pd.read_csv(file_path, encoding='utf-8-sig')
 
     # TODO 1.1: 顯示前 5 筆資料
-    df.head(5)    
+    print(df.head(5))
 
     # TODO 1.2: 查看資料結構（欄位、型態、缺失值）
     df.info()
-    df.isnull().sum
+    print(df.isnull().sum())
     return df
 
 def feature_engineering(df):
@@ -45,7 +45,7 @@ def filter_and_analyze_data(df):
     high_A = df[(high_A['英文'] > 90) & (high_A['班級'] == 'A')]
     # TODO 4.1: 統計摘要
     summary = None
-    symmary = df.describe()
+    summary = df.describe()
     # TODO 4.2: 找出總分最高的學生
     top_student = None
     top_student = df['總分'].max()
